@@ -8,31 +8,35 @@ use Illuminate\Support\Facades\DB;
 class CategoryControllerAPI extends Controller
 {
     //
-//     category_id
-// category_name
-// description
+
     
     public function addCategory(Request $rq){
-        $name = $rq->input('txtpass');     
+        $name = $rq->input('txtname');     
         $desc = $rq ->input("txtdesc");
+        $createddate = date("Y-m-d H:i:s");
 
        // submit data into table of database 
-       DB::table('tblcategory')->insert([
+       DB::table('categories')->insert([
             'category_name' => $name,
-            'description' => $desc
+            'description' => $desc,
+            'created_at' => $createddate
         ]);
     
         echo ('1');
     }
 
     public function updateCategory(Request $rq){
-        $id = $rq->input('txtuser');
-        $name = $rq->input('txtpass');     
+        $id = $rq->input('txtid');
+        $name = $rq->input('txtname');     
         $desc = $rq ->input("txtdesc");
+        $updateddate = date("Y-m-d H:i:s");
 
-        DB::table('tblcategory')->where('category_id',$id)->update(
+
+
+        DB::table('categories')->where('id',$id)->update(
             ['category_name' => $name, 
             'description' => $desc, 
+            'updated_at' => $updateddate
         ]);
         echo '1';
     }
@@ -40,12 +44,12 @@ class CategoryControllerAPI extends Controller
     public function deleteCategory(Request $rq){
         $id = $rq->input('txtid');
         
-        DB::table('tbluser')->where('userid', '=',$id)->delete();
+        DB::table('categories')->where('id', '=',$id)->delete();
         echo '1';
     }
 
     public function viewCategory() {
-        $res = DB::table('tbluser')->get();
+        $res = DB::table('categories')->get();
         return $res;
     }
 }
