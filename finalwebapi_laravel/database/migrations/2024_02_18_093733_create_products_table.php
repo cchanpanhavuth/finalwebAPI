@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("category_id");
-            $table->string("product_name");
+            $table->foreignId("category_id")->references('id')->on('categories')->onDelete('cascade');
+            $table->string("product_name",30);
             $table->decimal("price");
             $table->string("image");
 
