@@ -78,7 +78,7 @@ export default function SubCategory() {
                 txtid:id,
               })
               .then(function (response) {
-                if(response.data==1){
+                if(response.data=="1"){
                   alert("Record has been deleted");
                   window.location.href="/categories";
                 }
