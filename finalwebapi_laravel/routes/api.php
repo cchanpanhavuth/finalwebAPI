@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\CategoryControllerAPI;
 use App\Http\Controllers\ProductControllerAPI;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\Auth;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +32,13 @@ Route::post('/addProduct',[ProductControllerAPI::class,'addProduct']);
 Route::post('/updateProduct',[ProductControllerAPI::class,'updateProduct']);
 Route::post('/deleteProduct',[ProductControllerAPI::class,'deleteProduct']);
 Route::get('/viewProduct',[ProductControllerAPI::class,'viewProduct']);
+
+//Route of Orders
+Route::post('/addOrder',[OrdersController::class,'addOrder']);
+Route::post('/updateOrder',[OrdersController::class,'updateOrder']);
+Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
+Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
+
+
+//register
+Route::post("auth/register", [AuthController::class,'register']);
