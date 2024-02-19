@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import myAxios from "../../services/axios";
 
 export default function SubCategory() {
     const[categorylist,setCategory]=useState([]);
@@ -72,13 +73,13 @@ export default function SubCategory() {
         let id = categories.id;
         var con = window.confirm("Are you sure you want to delete this category?");
 
-            if(con==true){
+            if(con == true){
   
               axios.post('http://127.0.0.1:8000/api/deleteCategory', {
                 txtid:id,
               })
               .then(function (response) {
-                if(response.data=="1"){
+                if(response.data == 1){
                   alert("Record has been deleted");
                   window.location.href="/categories";
                 }

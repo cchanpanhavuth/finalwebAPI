@@ -20,7 +20,7 @@ export default function SubAccount() {
         password: password1,
         email: email1})
         .then(function (response) {
-            if(response.data.status="200"){
+            if(response.data.status == "200"){
               
               localStorage.setItem('auth_token',response.data.token)
               localStorage.setItem('auth_name',response.data.username)
