@@ -9,17 +9,18 @@ class ProductControllerAPI extends Controller
 {
     //
 
-//     product_id
-// category_id
-// product_name
-// price
-// image
     
     public function addProduct(Request $rq){
         $cat_id = $rq->input('txtcatid');
         $name = $rq->input('txtname');  
-        $price = $rq ->input("txtdesc");
-        $img = $rq ->input("txtimg");
+        $price = $rq ->input("txtprice");
+        if ($rq->hasFile('txtimg')) {
+            $file = $rq->file('txtimg');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('uploads/product/', $filename);
+            $img ='uploads/product/'.$filename;
+        }
         $createddate = date("Y-m-d H:i:s");
 
        // submit data into table of database 
@@ -34,12 +35,18 @@ class ProductControllerAPI extends Controller
         echo ('1');
     }
 
-    public function updateCategory(Request $rq){
+    public function updateProduct(Request $rq){
         $id = $rq->input('txtid');
         $cat_id = $rq->input('txtcatid');
         $name = $rq->input('txtname');  
-        $price = $rq ->input("txtdesc");
-        $img = $rq ->input("txtimg");
+        $price = $rq ->input("txtprice");
+        if ($rq->hasFile('txtimg')) {
+            $file = $rq->file('txtimg');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('uploads/product/', $filename);
+            $img ='uploads/product/'.$filename;
+        }
         $updateddate = date("Y-m-d H:i:s");
 
 
@@ -54,14 +61,14 @@ class ProductControllerAPI extends Controller
         echo '1';
     }
 
-    public function deleteCategory(Request $rq){
+    public function deleteProduct(Request $rq){
         $id = $rq->input('txtid');
         
         DB::table('products')->where('id', '=',$id)->delete();
         echo '1';
     }
 
-    public function viewCategory() {
+    public function viewProduct() {
         $res = DB::table('products')->get();
         return $res;
     }
