@@ -14,7 +14,13 @@ class ProductControllerAPI extends Controller
         $cat_id = $rq->input('txtcatid');
         $name = $rq->input('txtname');  
         $price = $rq ->input("txtprice");
-        $img = $rq ->input("txtimg");
+        if ($rq->hasFile('txtimg')) {
+            $file = $rq->file('txtimg');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('uploads/product/', $filename);
+            $img ='uploads/product/'.$filename;
+        }
         $createddate = date("Y-m-d H:i:s");
 
        // submit data into table of database 
@@ -34,7 +40,13 @@ class ProductControllerAPI extends Controller
         $cat_id = $rq->input('txtcatid');
         $name = $rq->input('txtname');  
         $price = $rq ->input("txtprice");
-        $img = $rq ->input("txtimg");
+        if ($rq->hasFile('txtimg')) {
+            $file = $rq->file('txtimg');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $ext;
+            $file->move('uploads/product/', $filename);
+            $img ='uploads/product/'.$filename;
+        }
         $updateddate = date("Y-m-d H:i:s");
 
 
