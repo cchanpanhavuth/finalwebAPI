@@ -1,6 +1,39 @@
+import axios from 'axios';
 import React from 'react'
+import { useEffect, useState } from "react";
 
 export default function SubAccount() {
+    const[txtuser,setUser]=useState([]);
+    
+    const[txtname,setName]=useState("");
+    const[txtpass,setPass]=useState("");
+    const[txtemail,setEmail]=useState("");
+
+    function addUser(){
+      let name1 = txtname;
+      let password1 = txtpass;
+      let email1 = txtemail;
+       
+      axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then( res=> {
+        axios.post('http://127.0.0.1:8000/api/register',{
+        name: name1,
+        password: password1,
+        email: email1})
+        .then(function (response) {
+            if(response.data.status == "200"){
+              
+              localStorage.setItem('auth_token',response.data.token)
+              localStorage.setItem('auth_name',response.data.username)
+
+              alert("Record has been added.");
+             }
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        });
+  
+    }
   return (
     <>
      <div className="modal modal-lg fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -11,9 +44,6 @@ export default function SubAccount() {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                      
-                    {/* <section className="vh-10" style={{backgroundColor:"rgb(240, 220, 183)"}}> */}
-                      {/* <div className="container py-5 h-100"> */}
                         <div className="row d-flex justify-content-center align-items-center h-10">
                           <div className="col col-xl-10">
                             <div className="" style={{borderRadius: "1rem"}}>
@@ -45,11 +75,8 @@ export default function SubAccount() {
                                         <button className="btn btn-dark btn-lg btn-block" type="button">Login</button>
                                       </div>
 
-                                      <a className="small text-muted" href="#!">Forgot password?</a>
                                       <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <a href="#!"
-                                      style={{color: "#393f81"}}>Register here</a></p>
-                                      <a href="#!" className="small text-muted">Terms of use.</a>
-                                      <a href="#!" className="small text-muted">Privacy policy</a>
+                                      style={{color: "#393f81"}}  data-bs-target="#registerModal" data-bs-toggle="modal">Register here</a></p>
                                       </form>
 
                                   </div>
@@ -58,13 +85,35 @@ export default function SubAccount() {
                             </div>
                           </div>
                         </div>
-                      {/* </div> */}
-                    {/* </section> */}
-                  </div>
-                                     
+                  </div>                 
                 </div>
             </div>
         </div>
+
+
+  <div class="modal fade" id="registerModal" aria-hidden="true" aria-labelledby="registerModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Register </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="">
+                Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                Email: <input type="text" className="form-control" value={txtemail} onChange={(e)=>setEmail(e.target.value)}></input>
+                Password: <input type="password" className="form-control" value={txtpass} onChange={(e)=>setPass(e.target.value)}></input>
+
+      </form> 
+      </div>
+      <div class="modal-footer">
+      <button class="btn btn-primary"  onClick={addUser}>regester</button>
+
+        <button class="btn btn-primary" data-bs-target="#loginModal" data-bs-toggle="modal" onClick={addUser}>Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
     </>
   )
 }
