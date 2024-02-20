@@ -32,3 +32,4 @@ Route::post('/deleteProduct',[ProductControllerAPI::class,'deleteProduct']);
 Route::get('/viewProduct',[ProductControllerAPI::class,'viewProduct']);
 
 Route::post('/register',[AuthControllerAPI::class,'register']);
+Route::post('/login',[AuthControllerAPI::class,'login']);

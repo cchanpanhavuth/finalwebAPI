@@ -4,28 +4,31 @@ import { useEffect, useState } from "react";
 
 export default function SubAccount() {
     const[txtuser,setUser]=useState([]);
+    const[errorList,setErrorList]=useState([]);
     
     const[txtname,setName]=useState("");
     const[txtpass,setPass]=useState("");
     const[txtemail,setEmail]=useState("");
 
     function addUser(){
-      let name1 = txtname;
-      let password1 = txtpass;
-      let email1 = txtemail;
+      const Data = {
+        name: txtname,
+        password: txtpass,
+        email: txtemail
+      }
        
       axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then( res=> {
-        axios.post('http://127.0.0.1:8000/api/register',{
-        name: name1,
-        password: password1,
-        email: email1})
+        axios.post('http://127.0.0.1:8000/api/register',Data)
         .then(function (response) {
             if(response.data.status == "200"){
               
               localStorage.setItem('auth_token',response.data.token)
               localStorage.setItem('auth_name',response.data.username)
 
-              alert("Record has been added.");
+              alert("Resigteration has been done. You have been sucessfully logged in!");
+             }
+             else{
+              setErrorList(response.data.validation_errors);
              }
         })
         .catch(function (error) {
@@ -33,6 +36,28 @@ export default function SubAccount() {
         })
         });
   
+    }
+
+    function loginSubmit() {
+      const Data = {
+        password: txtpass,
+        email: txtemail
+      }
+      axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie').then( res=> {
+      axios.post('http://127.0.0.1:8000/api/login',Data)
+      .then(function (response) {
+        if (response.data.status == 200) {
+          localStorage.setItem('auth_token',response.data.token)
+          localStorage.setItem('auth_name',response.data.username)
+          alert("You have sucessfully logged in!");
+
+        }else if(response.data.status == 401){
+          alert("Invalid Credentials");
+        }else{
+          setErrorList(response.data.validation_errors);
+        }
+      })
+    })
     }
   return (
     <>
@@ -62,17 +87,22 @@ export default function SubAccount() {
                                       <h5 className="fw-normal mb-3 pb-3" style={{letterSpacing: "1px"}}>Sign into your account</h5>
 
                                       <div className="form-outline mb-4">
-                                        <input type="email" id="form2Example17" className="form-control form-control-lg" />
-                                        <label className="form-label" for="form2Example17">Email address</label>
+                                      <label className="form-label" for="form2Example17">Email address</label>
+
+                                        <input type="email" id="form2Example17" className="form-control form-control-lg"  value={txtemail} onChange={(e)=>setEmail(e.target.value)}/>
+                                        <span>{errorList.email}</span>
                                       </div>
+                                      
 
                                       <div className="form-outline mb-4">
-                                        <input type="password" id="form2Example27" className="form-control form-control-lg" />
-                                        <label className="form-label" for="form2Example27">Password</label>
+                                      <label className="form-label" for="form2Example27" >Password</label>
+                                        <input type="password" id="form2Example27" className="form-control form-control-lg "value={txtpass} onChange={(e)=>setPass(e.target.value)} />
+                                        <span>{errorList.password}</span>
+
                                       </div>
 
                                       <div className="pt-1 mb-4">
-                                        <button className="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                        <button className="btn btn-dark btn-lg btn-block" type="button" onClick={loginSubmit}>Login</button>
                                       </div>
 
                                       <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <a href="#!"
@@ -100,16 +130,26 @@ export default function SubAccount() {
       </div>
       <div class="modal-body">
       <form action="">
+                <div>
                 Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                <span>{errorList.name}</span>
+                </div>
+                <div>
                 Email: <input type="text" className="form-control" value={txtemail} onChange={(e)=>setEmail(e.target.value)}></input>
+                <span>{errorList.email}</span>
+                </div>
+                <div>
                 Password: <input type="password" className="form-control" value={txtpass} onChange={(e)=>setPass(e.target.value)}></input>
+                <span>{errorList.password}</span>
+                </div>
+
 
       </form> 
       </div>
       <div class="modal-footer">
-      <button class="btn btn-primary"  onClick={addUser}>regester</button>
+      <button class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Back to Log In Login</button>
 
-        <button class="btn btn-primary" data-bs-target="#loginModal" data-bs-toggle="modal" onClick={addUser}>Back to first</button>
+        <button class="btn btn-primary" data-bs-target="#registerModal" data-bs-toggle="modal" onClick={addUser}>Register and Login</button>
       </div>
     </div>
   </div>

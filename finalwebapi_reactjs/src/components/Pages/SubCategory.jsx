@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import myAxios from "../../services/axios";
 
 export default function SubCategory() {
     const[categorylist,setCategory]=useState([]);
