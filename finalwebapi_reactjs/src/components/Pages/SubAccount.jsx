@@ -26,6 +26,7 @@ export default function SubAccount() {
               localStorage.setItem('auth_name',response.data.username)
 
               alert("Resigteration has been done. You have been sucessfully logged in!");
+              window.location.reload();  
              }
              else{
               setErrorList(response.data.validation_errors);
@@ -50,7 +51,7 @@ export default function SubAccount() {
           localStorage.setItem('auth_token',response.data.token)
           localStorage.setItem('auth_name',response.data.username)
           alert("You have sucessfully logged in!");
-
+          window.location.reload();  
         }else if(response.data.status == 401){
           alert("Invalid Credentials");
         }else{

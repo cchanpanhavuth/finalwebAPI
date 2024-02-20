@@ -72,5 +72,12 @@ class AuthControllerAPI extends Controller
             }
         }
     }
+
+    public function logout(){
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status'=>200,
+        ]);
+    }
     
 }

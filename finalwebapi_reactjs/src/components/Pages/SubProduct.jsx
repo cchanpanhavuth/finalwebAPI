@@ -29,8 +29,11 @@ export default function SubProduct() {
              }
         })
         .catch(function (error) {
-          console.log(error);
-        });
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
   
     }
     useEffect(
@@ -77,9 +80,12 @@ export default function SubProduct() {
                window.location.href="/products";            
             }
         })
-         .catch(function (error) {
-           console.log(error);
-       });
+        .catch(function (error) {
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
          
    
    
@@ -110,7 +116,10 @@ export default function SubProduct() {
                 }
               })
               .catch(function (error) {
-                console.log(error);
+                if (error.response.status === 401) {
+                    alert("You do not have permission to do this.");
+                   }else{
+                console.log(error);}
               });
   
         }

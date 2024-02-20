@@ -17,12 +17,16 @@ export default function SubCategory() {
         .then(function (response) {
             if(response.data=="1"){
                 alert("Record has been added.");
-                window.location.href="/categories";            
-             }
+                window.location.href="/categories";         
+            }   
+           
         })
         .catch(function (error) {
-          console.log(error);
-        });
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
   
     }
   
@@ -36,7 +40,7 @@ export default function SubCategory() {
               console.log(error);
             });
   
-          },[categorylist]
+          },[]
     );
  
 
@@ -53,9 +57,12 @@ export default function SubCategory() {
                window.location.href="/categories";            
             }
         })
-         .catch(function (error) {
-           console.log(error);
-       });
+        .catch(function (error) {
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
          
    
    
@@ -82,9 +89,13 @@ export default function SubCategory() {
                   alert("Record has been deleted");
                   window.location.href="/categories";
                 }
+                
               })
               .catch(function (error) {
-                console.log(error);
+                if (error.response.status === 401) {
+                    alert("You do not have permission to do this.");
+                   }else{
+                console.log(error);}
               });
   
         }
