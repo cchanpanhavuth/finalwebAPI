@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductControllerAPI;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,11 @@ Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
 
 //register
 Route::post("auth/register", [AuthController::class,'register']);
+
+
+//route customer
+Route::post('/addCustomer',[CustomerController::class,'store']);
+Route::post('/updateCustomer',[CustomerController::class,'update']);
+Route::get('/viewCustomer',[CustomerController::class,'index']);
+Route::post('/deleteCustomer',[CustomerController::class,'deleteCustomer']);
+

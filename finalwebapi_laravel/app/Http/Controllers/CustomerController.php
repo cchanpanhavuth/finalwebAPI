@@ -1,10 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,52 +8,54 @@ class CustomerController extends Controller
 {
     //index
     public function index(){
-        $customer = DB::table('çustomers')->get();
-
-        return $customer;
+        $res = DB::table('customers')->get();
+        return $res;
     }
     //store
     public function store(Request $request){
-        $data = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'phonenumber' => 'required|numeric',
-        ]);
+
+        $fname=$request->input('firstname');
+        $lname = $request->input('lastname');
+        $email =$request->input('email');
+        $phone =$request->input('phonenumber');
 
         DB::table('customers')->insert([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'email' => $request->email,
-            'phonenumber' => $request->phonenumber,
-            'password' => $$request->password,
+            'firstname' => $fname,
+            'lastname' => $lname,
+            'email' => $email,
+            'phonenumber' => $phone
+    
         ]);
 
-        return '1';
+        echo ('1');
     }
 
-    //edit
+    //update
+    public function update(Request $rq){
+        $id = $rq->input('id');
+        $firstname = $rq->input('firstname');     
+        $lastname = $rq ->input("lastname");
+        $email = $rq ->input('email');
+        $phone = $rq -> input('phonenumber');
+        $updateddate = date("Y-m-d H:i:s");
 
-    public function edit(Customer $customer){
-        return view('customer.edit', ['customer' => $customer]);
-    }
-    public function update(Customer $customer, Request $request){
-        $data = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'phonenumber' => 'required|numeric',
+        DB::table('customers')->where('id',$id)->update(
+            ['firstname' => $firstname, 
+            'lastname' => $lastname, 
+            'email' => $email,
+            'phonenumber' => $phone,
+            'updated_at' => $updateddate
         ]);
-
-        $customer->update($data);
-
-        return redirect(route('customer.index'))->with('success', 'Customer Updated Success');
+        echo ('1');
     }
-    public function destroy(Customer $customer){
-        $customer->delete();
-        return redirect(route('customer.index'))->with('success', 'Customer deleted Successful');
+
+    //delete
+    public function deleteCustomer(Request $rq){
+        $id = $rq->input('txtid');
+        
+        DB::table('customers')->where('id', '=',$id)->delete();
+        echo ('1');
     }
+
 }
 
