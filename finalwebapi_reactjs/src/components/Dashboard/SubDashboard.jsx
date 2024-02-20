@@ -1,6 +1,11 @@
 import React from 'react';
 import './styles.css';
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import productlist from '../Pages/Products';
 function SubDashboard() {
+
+
   return (
     <div>
         
@@ -9,7 +14,7 @@ function SubDashboard() {
                     <div className="col-md-3">
                         <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 className="fs-2">720</h3>
+                                <h3 className="fs-2">{productlist.length}</h3>
                                 <p className="fs-5">Products</p>
                             </div>
                             <i className="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
