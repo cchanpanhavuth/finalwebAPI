@@ -42,7 +42,7 @@ Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
 
 
 //register
-Route::post("auth/register", [AuthController::class,'register']);
+//Route::post("auth/register", [AuthController::class,'register']);
 
 
 //route customer

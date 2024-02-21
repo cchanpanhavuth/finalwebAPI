@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
     public function addOrder(Request $rq){
-        $customer_id= $rq->input('txtcustomer');     
-        $user_id= $rq->input("txtuser");
+        $customer_id= $rq->input('customer');     
+        $user_id= $rq->input("user");
         $createddate = date("Y-m-d H:i:s");
 
        // submit data into table of database 
@@ -22,4 +23,5 @@ class OrdersController extends Controller
     
         echo ('1');
     }
+    
 }
