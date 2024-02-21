@@ -22,7 +22,7 @@ class CategoryControllerAPI extends Controller
             'created_at' => $createddate
         ]);
     
-        echo ('1');
+        echo '1';
     }
 
     public function updateCategory(Request $rq){

@@ -14,16 +14,19 @@ class CustomerController extends Controller
     //store
     public function store(Request $request){
 
-        $fname=$request->input('firstname');
-        $lname = $request->input('lastname');
-        $email =$request->input('email');
-        $phone =$request->input('phonenumber');
+        $fname=$request->input('txtfname');
+        $lname = $request->input('txtlname');
+        $email =$request->input('txtemail');
+        $phone =$request->input('txtphone');
+        $createddate = date("Y-m-d H:i:s");
+
 
         DB::table('customers')->insert([
             'firstname' => $fname,
             'lastname' => $lname,
             'email' => $email,
-            'phonenumber' => $phone
+            'phonenumber' => $phone,
+            'created_at' => $createddate
     
         ]);
 
@@ -32,11 +35,11 @@ class CustomerController extends Controller
 
     //update
     public function update(Request $rq){
-        $id = $rq->input('id');
-        $firstname = $rq->input('firstname');     
-        $lastname = $rq ->input("lastname");
-        $email = $rq ->input('email');
-        $phone = $rq -> input('phonenumber');
+        $id = $rq->input('txtid');
+        $firstname = $rq->input('txtfname');     
+        $lastname = $rq ->input("txtlname");
+        $email = $rq ->input('txtemail');
+        $phone = $rq -> input('txtphone');
         $updateddate = date("Y-m-d H:i:s");
 
         DB::table('customers')->where('id',$id)->update(

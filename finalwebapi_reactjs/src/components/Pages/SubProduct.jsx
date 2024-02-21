@@ -29,8 +29,11 @@ export default function SubProduct() {
              }
         })
         .catch(function (error) {
-          console.log(error);
-        });
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
   
     }
     useEffect(
@@ -77,9 +80,12 @@ export default function SubProduct() {
                window.location.href="/products";            
             }
         })
-         .catch(function (error) {
-           console.log(error);
-       });
+        .catch(function (error) {
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
          
    
    
@@ -110,7 +116,10 @@ export default function SubProduct() {
                 }
               })
               .catch(function (error) {
-                console.log(error);
+                if (error.response.status === 401) {
+                    alert("You do not have permission to do this.");
+                   }else{
+                console.log(error);}
               });
   
         }
@@ -129,9 +138,9 @@ export default function SubProduct() {
                     </div>
                     <div className="modal-body">
                         <form action="">
-                            Product Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Product Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
                             Select Category:
-                                <select className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
+                                <select required className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
                                     <option>Select Category</option>
                                     {categorylist.map((categories)=>{
                                         return(
@@ -139,8 +148,8 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
-                            Image: <input type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
+                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -162,9 +171,9 @@ export default function SubProduct() {
                     <div className="modal-body">
                         <form action="">
                             <input type="hidden"  value={txtproid} onChange={(e)=>setProID(e.target.value)}/>
-                            Product Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Product Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
                             Select Category:
-                                <select className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
+                                <select required className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
                                     <option>Select Category</option>
                                     {categorylist.map((categories)=>{
                                         return(
@@ -172,8 +181,8 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
-                            Image: <input type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
+                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -187,7 +196,7 @@ export default function SubProduct() {
         <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Products</h3>
-            <button type="button" className="btn btn-primary  float-end offset-8 col-1" data-bs-toggle="modal" data-bs-target="#addproductModal">
+            <button type="button" className="btn primary-btn    offset-7 col-2" data-bs-toggle="modal" data-bs-target="#addproductModal">
                 Add product
             </button>
         </div>
@@ -220,7 +229,7 @@ export default function SubProduct() {
                           <td>{products.created_at}</td>
                           <td>{products.updated_at}</td>
                           <td>
-                          <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateproductModal"
+                          <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updateproductModal"
                            onClick={(e) => selectProductUpdate(e, products)}>
                             Edit
                           </button>  

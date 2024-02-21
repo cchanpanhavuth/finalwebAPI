@@ -17,12 +17,16 @@ export default function SubCategory() {
         .then(function (response) {
             if(response.data=="1"){
                 alert("Record has been added.");
-                window.location.href="/categories";            
-             }
+                window.location.href="/categories";         
+            }   
+           
         })
         .catch(function (error) {
-          console.log(error);
-        });
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
   
     }
   
@@ -36,7 +40,7 @@ export default function SubCategory() {
               console.log(error);
             });
   
-          },[categorylist]
+          },[]
     );
  
 
@@ -53,9 +57,12 @@ export default function SubCategory() {
                window.location.href="/categories";            
             }
         })
-         .catch(function (error) {
-           console.log(error);
-       });
+        .catch(function (error) {
+            if (error.response.status === 401) {
+                alert("You do not have permission to do this.");
+               }else{
+            console.log(error);}
+          });
          
    
    
@@ -72,19 +79,23 @@ export default function SubCategory() {
         let id = categories.id;
         var con = window.confirm("Are you sure you want to delete this category?");
 
-            if(con==true){
+            if(con == true){
   
               axios.post('http://127.0.0.1:8000/api/deleteCategory', {
                 txtid:id,
               })
               .then(function (response) {
-                if(response.data==1){
+                if(response.data == 1){
                   alert("Record has been deleted");
                   window.location.href="/categories";
                 }
+                
               })
               .catch(function (error) {
-                console.log(error);
+                if (error.response.status === 401) {
+                    alert("You do not have permission to do this.");
+                   }else{
+                console.log(error);}
               });
   
         }
@@ -103,8 +114,8 @@ export default function SubCategory() {
                     </div>
                     <div className="modal-body">
                         <form action="">
-                            Category Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
-                            Description: <input type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
+                            Category Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Description: <input required type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -127,8 +138,8 @@ export default function SubCategory() {
                     <div className="modal-body">
                         <form action="">
                             <input type="hidden"  value={txtcateid} onChange={(e)=>setCateID(e.target.value)}/>
-                            Category Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
-                            Description: <input type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
+                            Category Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Description: <input required type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -143,7 +154,7 @@ export default function SubCategory() {
             <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Categories</h3>
-            <button type="button" className="btn btn-primary  float-end offset-8 col-1" data-bs-toggle="modal" data-bs-target="#addcategoryModal">
+            <button type="button" className="btn primary-btn col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcategoryModal">
                 Add category
             </button>
         </div>
@@ -172,7 +183,7 @@ export default function SubCategory() {
                           <td>{categories.created_at}</td>
                           <td>{categories.updated_at}</td>
                           <td>
-                          <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updatecategoryModal"
+                          <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updatecategoryModal"
                            onClick={(e) => selectCategoryUpdate(e, categories)}>
                             Edit
                           </button>  
