@@ -114,8 +114,8 @@ export default function SubCategory() {
                     </div>
                     <div className="modal-body">
                         <form action="">
-                            Category Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
-                            Description: <input type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
+                            Category Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Description: <input required type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -138,8 +138,8 @@ export default function SubCategory() {
                     <div className="modal-body">
                         <form action="">
                             <input type="hidden"  value={txtcateid} onChange={(e)=>setCateID(e.target.value)}/>
-                            Category Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
-                            Description: <input type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
+                            Category Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Description: <input required type="text" className="form-control" value={txtdesc} onChange={(e)=>setDesc(e.target.value)}></input>
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -154,7 +154,7 @@ export default function SubCategory() {
             <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Categories</h3>
-            <button type="button" className="btn btn-primary  float-end offset-8 col-1" data-bs-toggle="modal" data-bs-target="#addcategoryModal">
+            <button type="button" className="btn btn-primary col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcategoryModal">
                 Add category
             </button>
         </div>

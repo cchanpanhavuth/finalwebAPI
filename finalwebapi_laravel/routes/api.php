@@ -26,7 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/viewCategory',[CategoryControllerAPI::class,'viewCategory']);
 
-
 Route::get('/viewProduct',[ProductControllerAPI::class,'viewProduct']);
 
 Route::post('/register',[AuthControllerAPI::class,'register']);
@@ -39,26 +38,26 @@ Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
 Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
 
 
-
-
 //route customer
-Route::post('/addCustomer',[CustomerController::class,'store']);
-Route::post('/updateCustomer',[CustomerController::class,'update']);
+
 Route::get('/viewCustomer',[CustomerController::class,'index']);
-Route::post('/deleteCustomer',[CustomerController::class,'deleteCustomer']);
 
 
 Route::middleware(['auth:sanctum'])->group(function(){
 
-    Route::post('/logout',[AuthControllerAPI::class,'logout']);
-    
-Route::post('/addCategory',[CategoryControllerAPI::class,'addCategory']);
-Route::post('/updateCategory',[CategoryControllerAPI::class,'updateCategory']);
-Route::post('/deleteCategory',[CategoryControllerAPI::class,'deleteCategory']);
+    Route::post('/logout',[AuthControllerAPI::class,'logout']);  
+    Route::post('/addCategory',[CategoryControllerAPI::class,'addCategory']);
+    Route::post('/updateCategory',[CategoryControllerAPI::class,'updateCategory']);
+    Route::post('/deleteCategory',[CategoryControllerAPI::class,'deleteCategory']);
 
-Route::post('/addProduct',[ProductControllerAPI::class,'addProduct']);
-Route::post('/updateProduct',[ProductControllerAPI::class,'updateProduct']);
-Route::post('/deleteProduct',[ProductControllerAPI::class,'deleteProduct']);
+    Route::post('/addProduct',[ProductControllerAPI::class,'addProduct']);
+    Route::post('/updateProduct',[ProductControllerAPI::class,'updateProduct']);
+    Route::post('/deleteProduct',[ProductControllerAPI::class,'deleteProduct']);
+
+    Route::post('/addCustomer',[CustomerController::class,'store']);
+    Route::post('/updateCustomer',[CustomerController::class,'update']);
+    Route::post('/deleteCustomer',[CustomerController::class,'deleteCustomer']);
+
 
 });
 

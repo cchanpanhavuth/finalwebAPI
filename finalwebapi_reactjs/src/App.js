@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Products from './components/Pages/Products';
 import Category from './components/Pages/Category';
-
 import Customers from './components/Pages/Customers';
 
 import axios from 'axios';

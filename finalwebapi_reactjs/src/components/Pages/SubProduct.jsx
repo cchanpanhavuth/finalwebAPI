@@ -138,9 +138,9 @@ export default function SubProduct() {
                     </div>
                     <div className="modal-body">
                         <form action="">
-                            Product Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Product Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
                             Select Category:
-                                <select className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
+                                <select required className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
                                     <option>Select Category</option>
                                     {categorylist.map((categories)=>{
                                         return(
@@ -148,8 +148,8 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
-                            Image: <input type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
+                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>
                     <div className="modal-footer">
@@ -171,9 +171,9 @@ export default function SubProduct() {
                     <div className="modal-body">
                         <form action="">
                             <input type="hidden"  value={txtproid} onChange={(e)=>setProID(e.target.value)}/>
-                            Product Name: <input type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
+                            Product Name: <input required type="text" className="form-control" value={txtname} onChange={(e)=>setName(e.target.value)}></input>
                             Select Category:
-                                <select className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
+                                <select required className='form-control' value={txtcateid} onChange={(e)=>setCateID(e.target.value)}>
                                     <option>Select Category</option>
                                     {categorylist.map((categories)=>{
                                         return(
@@ -181,8 +181,8 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
-                            Image: <input type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
+                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>
                     <div className="modal-footer">

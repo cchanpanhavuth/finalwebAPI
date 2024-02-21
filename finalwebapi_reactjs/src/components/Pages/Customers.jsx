@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from '../Dashboard/Sidebar'
 import Navigation from '../Dashboard/Navigation'
 import SubDashboard from '../Dashboard/SubDashboard'
-import SubUsers from './SubCusomters'
+import SubCusomters from './SubCusomters'
 
 export default function Cusomters() {
   return (
@@ -11,7 +11,7 @@ export default function Cusomters() {
             <Sidebar/>
             <div id="page-content-wrapper">
                 <Navigation/>
-                <SubUsers/>
+                <SubCusomters/>
 
                 
             </div>
