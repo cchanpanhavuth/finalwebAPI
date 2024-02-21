@@ -170,7 +170,7 @@ export default function SubCusomters() {
             <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Cusomters</h3>
-            <button type="button" className="btn btn-primary  col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcusomterModal">
+            <button type="button" className="btn primary-btn   col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcusomterModal">
                 Add customer
             </button>
         </div>
@@ -203,7 +203,7 @@ export default function SubCusomters() {
                           <td>{customers.created_at}</td>
                           <td>{customers.updated_at}</td>
                           <td>
-                          <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updatecusomterModal"
+                          <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updatecusomterModal"
                            onClick={(e) => selectCustomerUpdate(e, customers)}>
                             Edit
                           </button>  

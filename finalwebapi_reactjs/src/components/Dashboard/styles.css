@@ -8,6 +8,14 @@
 .primary-text {
   color: var(--main-text-color);
 }
+.primary-btn:hover {
+  background-color: var(--main-text-color);
+  color: white;
+}
+.primary-btn{
+  background-color:rgb(194, 130, 10);
+  color: white;
+}
 
 .second-text {
   color: var(--second-text-color);

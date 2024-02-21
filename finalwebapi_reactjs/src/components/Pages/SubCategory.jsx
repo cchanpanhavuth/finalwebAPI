@@ -154,7 +154,7 @@ export default function SubCategory() {
             <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Categories</h3>
-            <button type="button" className="btn btn-primary col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcategoryModal">
+            <button type="button" className="btn primary-btn col-2 offset-7 " data-bs-toggle="modal" data-bs-target="#addcategoryModal">
                 Add category
             </button>
         </div>
@@ -183,7 +183,7 @@ export default function SubCategory() {
                           <td>{categories.created_at}</td>
                           <td>{categories.updated_at}</td>
                           <td>
-                          <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updatecategoryModal"
+                          <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updatecategoryModal"
                            onClick={(e) => selectCategoryUpdate(e, categories)}>
                             Edit
                           </button>  
