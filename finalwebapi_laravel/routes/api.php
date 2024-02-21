@@ -32,9 +32,7 @@ Route::post('/register',[AuthControllerAPI::class,'register']);
 Route::post('/login',[AuthControllerAPI::class,'login']);
 
 //Route of Orders
-Route::post('/addOrder',[OrdersController::class,'addOrder']);
-Route::post('/updateOrder',[OrdersController::class,'updateOrder']);
-Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
+
 Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
 Route::get('/viewOrderItems',[OrdersController::class,'viewOrderItems']);
 
@@ -58,6 +56,10 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/addCustomer',[CustomerController::class,'store']);
     Route::post('/updateCustomer',[CustomerController::class,'update']);
     Route::post('/deleteCustomer',[CustomerController::class,'deleteCustomer']);
+
+    Route::post('/addOrder',[OrdersController::class,'addOrder']);
+    Route::post('/updateOrder',[OrdersController::class,'updateOrder']);
+    Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
 
 
 });
