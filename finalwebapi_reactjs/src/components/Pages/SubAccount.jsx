@@ -24,6 +24,8 @@ export default function SubAccount() {
               
               localStorage.setItem('auth_token',response.data.token)
               localStorage.setItem('auth_name',response.data.username)
+              localStorage.setItem('auth_id',response.data.user_id)
+
 
               alert("Resigteration has been done. You have been sucessfully logged in!");
               window.location.reload();  
@@ -50,6 +52,8 @@ export default function SubAccount() {
         if (response.data.status == 200) {
           localStorage.setItem('auth_token',response.data.token)
           localStorage.setItem('auth_name',response.data.username)
+          localStorage.setItem('auth_id',response.data.user_id)
+
           alert("You have sucessfully logged in!");
           window.location.reload();  
         }else if(response.data.status == 401){
@@ -150,7 +154,7 @@ export default function SubAccount() {
       <div class="modal-footer">
       <button class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Back to Log In Login</button>
 
-        <button class="btn btn-primary" data-bs-target="#registerModal" data-bs-toggle="modal" onClick={addUser}>Register and Login</button>
+        <button type="button" class="btn btn-primary"  onClick={addUser}>Register and Login</button>
       </div>
     </div>
   </div>

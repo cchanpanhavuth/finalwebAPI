@@ -15,10 +15,11 @@ function Sidebar() {
                         className="fas fa-tachometer-alt me-2"></i>Dashboard</NavLink>
                 <NavLink to="/customers" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         className="fas fa-project-diagram me-2"></i>Customers</NavLink>
-                <NavLink to="/products" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        className="fas fa-chart-line me-2"></i>Products</NavLink>
                 <NavLink to="/categories" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         className="fas fa-shopping-cart me-2"></i>Category</NavLink>
+                <NavLink to="/products" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        className="fas fa-chart-line me-2"></i>Products</NavLink>
+                
                 
                 
                 {/* <a href="#" className="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
