@@ -196,7 +196,7 @@ export default function SubProduct() {
         <div className="container-fluid px-4">
                 <div className="container-fluid row">
             <h3 className="fs-2 col-3">Products</h3>
-            <button type="button" className="btn btn-primary  float-end offset-8 col-1" data-bs-toggle="modal" data-bs-target="#addproductModal">
+            <button type="button" className="btn primary-btn    offset-7 col-2" data-bs-toggle="modal" data-bs-target="#addproductModal">
                 Add product
             </button>
         </div>
@@ -229,7 +229,7 @@ export default function SubProduct() {
                           <td>{products.created_at}</td>
                           <td>{products.updated_at}</td>
                           <td>
-                          <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateproductModal"
+                          <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updateproductModal"
                            onClick={(e) => selectProductUpdate(e, products)}>
                             Edit
                           </button>  
