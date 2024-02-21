@@ -2,8 +2,39 @@ import React from 'react';
 import './styles.css';
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import productlist from '../Pages/Products';
+
+
 function SubDashboard() {
+    const[customerlist,setCustomer]=useState([]);
+    const[productlist,setProcuct]=useState([]);
+
+
+
+    useEffect(
+        ()=>{
+           axios.get('http://127.0.0.1:8000/api/viewCustomer')
+           .then(function (response) {
+             setCustomer(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        },[]
+  );
+
+  useEffect(
+    ()=>{
+       axios.get('http://127.0.0.1:8000/api/viewProduct')
+       .then(function (response) {
+         setProcuct(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    },[]
+);
 
 
   return (
@@ -35,8 +66,8 @@ function SubDashboard() {
                     <div className="col-md-3">
                         <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
-                                <h3 className="fs-2">3899</h3>
-                                <p className="fs-5">Delivery</p>
+                                <h3 className="fs-2">{customerlist.length}</h3>
+                                <p className="fs-5">Cusomters</p>
                             </div>
                             <i className="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>

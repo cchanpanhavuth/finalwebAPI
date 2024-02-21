@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductControllerAPI;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
