@@ -2,7 +2,7 @@ Code for Assessment 3 for Web API class. Coffee shop dashbard that has customers
 
 To use code:
 
-1. Composer install in Laravel folder
+1. Composer install in Laravel folder and npm install in react folder
 2. Install Laravel/Sanctum to use authentication
 3. PHP artisan migrate for database tables
 4. PHP artisan serve and npm start to start application
