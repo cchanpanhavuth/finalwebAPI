@@ -152,7 +152,7 @@ export default function SubAccount() {
       </form> 
       </div>
       <div class="modal-footer">
-      <button class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Back to Log In Login</button>
+      <button class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Back to Log In</button>
 
         <button type="button" class="btn btn-primary"  onClick={addUser}>Register and Login</button>
       </div>
