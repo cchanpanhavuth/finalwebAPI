@@ -38,6 +38,7 @@ class AuthControllerAPI extends Controller
             return response()->json([
                 'status'=>200,
                 'username'=>$user->name,
+                'user_id'=>$user->id,
                 'token'=>$token
 
             ]);
@@ -67,6 +68,8 @@ class AuthControllerAPI extends Controller
                 return response()->json([
                     'status'=>200,
                     'username'=>$user->name,
+                    'user_id'=>$user->id,
+
                     'token'=>$token
                 ]);
             }

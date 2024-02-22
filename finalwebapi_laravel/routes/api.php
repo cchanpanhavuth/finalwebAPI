@@ -32,10 +32,9 @@ Route::post('/register',[AuthControllerAPI::class,'register']);
 Route::post('/login',[AuthControllerAPI::class,'login']);
 
 //Route of Orders
-Route::post('/addOrder',[OrdersController::class,'addOrder']);
-Route::post('/updateOrder',[OrdersController::class,'updateOrder']);
-Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
+
 Route::get('/viewOrder',[OrdersController::class,'viewOrder']);
+Route::get('/viewOrderItems',[OrdersController::class,'viewOrderItems']);
 
 
 //route customer
@@ -50,13 +49,17 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/updateCategory',[CategoryControllerAPI::class,'updateCategory']);
     Route::post('/deleteCategory',[CategoryControllerAPI::class,'deleteCategory']);
 
-    Route::post('/addProduct',[ProductControllerAPI::class,'addProduct']);
     Route::post('/updateProduct',[ProductControllerAPI::class,'updateProduct']);
     Route::post('/deleteProduct',[ProductControllerAPI::class,'deleteProduct']);
+    Route::post('/addProduct',[ProductControllerAPI::class,'addProduct']);
 
     Route::post('/addCustomer',[CustomerController::class,'store']);
     Route::post('/updateCustomer',[CustomerController::class,'update']);
     Route::post('/deleteCustomer',[CustomerController::class,'deleteCustomer']);
+
+    Route::post('/addOrder',[OrdersController::class,'addOrder']);
+    Route::post('/updateOrder',[OrdersController::class,'updateOrder']);
+    Route::post('/deleteOrder',[OrdersController::class,'deleteOrder']);
 
 
 });

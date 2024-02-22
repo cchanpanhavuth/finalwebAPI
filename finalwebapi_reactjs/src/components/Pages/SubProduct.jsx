@@ -148,7 +148,7 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Price: <input required type="number" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
                             Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>
@@ -181,7 +181,7 @@ export default function SubProduct() {
                                     }
                                     )}
                                 </select>
-                            Price: <input required type="text" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
+                            Price: <input required type="number" className="form-control" value={txtprice} onChange={(e)=>setPrice(e.target.value)}></input>
                             Image: <input required type="file" className="form-control" vaule={txtimg} onChange={(e) =>setImg( e.target.files[0])} />
                         </form> 
                     </div>

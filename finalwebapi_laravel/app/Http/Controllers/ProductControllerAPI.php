@@ -65,6 +65,7 @@ class ProductControllerAPI extends Controller
         $id = $rq->input('txtid');
         
         DB::table('products')->where('id', '=',$id)->delete();
+        
         echo '1';
     }
 
